@@ -1,0 +1,156 @@
+body {
+    background-color: rgb(225, 138, 245);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar {
+    background-color: #a96bd4 !important;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+    color: #212529 !important;
+    font-weight: 500;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+.btn-primary {
+    background-color: #F2C6DE;
+    border-color: #F2C6DE;
+    color: #212529;
+}
+
+.btn-primary:hover {
+    background-color: #e9b7d3;
+    border-color: #e9b7d3;
+}
+
+.btn-outline-light {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.badge.bg-info {
+    background-color: #F2C6DE !important;
+    color: #212529 !important;
+}
+
+footer {
+    color: #666;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 14px;
+}
+
+h3 {
+    color: #5a4e8c;
+}
+
+.btn {
+    border-radius: 8px;
+}
+
+.btn-edit {
+    background-color: #F2C6DE;
+    color: #212529;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-edit:hover {
+    background-color: #e9b7d3;
+    color: #000;
+}
+
+.btn-delete {
+    background-color: #DBCDF0;
+    color: #212529;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-delete:hover {
+    background-color: #cbbdf0;
+    color: #000;
+}
+
+/* 🌙 Dark Mode Styles */
+.dark-mode {
+    background-color: #1a0a2a !important; /* softened dark purple */
+    color: #f0e9ff !important;
+}
+
+.dark-mode .navbar {
+    background-color: #1f1f1f !important;
+}
+
+.dark-mode .navbar .nav-link,
+.dark-mode .navbar .navbar-brand {
+    color: #f1f1f1 !important;
+}
+
+.dark-mode .card {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border: 1px solid #333 !important;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .btn-edit,
+.dark-mode .btn-delete {
+    background-color: #2e2e2e !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .btn-edit:hover,
+.dark-mode .btn-delete:hover {
+    background-color: #444444 !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .badge {
+    background-color: #2a2a2a !important;
+    color: #f5f5f5 !important;
+}
+
+.dark-mode footer {
+    background-color: #1a1a1a !important;
+    color: #aaa;
+}
+
+.dark-mode h3 {
+    color: #c9c9ff;
+}
+
+/* Dark mode tweaks for outlined primary buttons */
+.dark-mode .btn-outline-primary {
+    color: #d8b9d8;
+    border-color: #d8b9d8;
+}
+
+.dark-mode .btn-outline-primary:hover {
+    background-color: #d8b9d8;
+    color: #121212;
+}
+
+/* Fix for buttons in dark mode */
+body.dark-mode .btn-outline-dark {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+body.dark-mode .btn-outline-dark:hover {
+    background-color: #ffffff;
+    color: #212529;
+}
+
+/* Smooth transition for theme toggle */
+body, .card, .navbar, .btn, .badge, h3, footer, table, td, th, .form-control {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
