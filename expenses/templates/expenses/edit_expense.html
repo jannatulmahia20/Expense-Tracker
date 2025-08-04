@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card p-4">
+            <h3>Edit Expense</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary mt-2">Update</button>
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary mt-2">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

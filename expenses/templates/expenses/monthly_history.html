@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="card p-4">
+        <h3 class="mb-3">📊 Monthly Expense History</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Year</th>
+                    <th>Total Spent (BDT)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in summary %}
+                <tr>
+                    <td>{{ entry.month }}</td>
+                    <td>{{ entry.year }}</td>
+                    <td>{{ entry.amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-sm-10 col-md-8 col-lg-6">
+      <div class="card p-4">
+        <h3 class="mb-4">{{ greeting }}, {% if user.is_authenticated %}{{ user.username }}{% else %}there{% endif %}! 👋 Welcome to your Expense Tracker</h3>
+        <div class="alert alert-info text-center">
+            <em>💙 "{{ quote }}"</em>
+        </div>
+        
+        <h3 class="mb-3">📅 Monthly Expense Summary</h3>
+
+        {% if budget %}
+          <p><strong>Monthly Budget:</strong>
+             <span class="badge bg-secondary">{{ budget.amount }} BDT</span></p>
+          <a href="{% url 'edit_budget' budget.pk %}" class="btn btn-outline-warning mb-3 w-100 w-md-auto">✏️ Edit Monthly Budget</a>
+          {% if total > budget.amount %}
+            <p class="text-danger">⚠️ You've exceeded your budget!</p>
+          {% endif %}
+        {% else %}
+          <div class="mb-3">
+            <a href="{% url 'set_budget' %}" class="btn btn-outline-primary w-100 w-md-auto">➕ Set Monthly Budget</a>
+          </div>
+        {% endif %}
+
+        <p><strong>Total Spent:</strong>
+           <span class="badge bg-danger">{{ total }} BDT</span></p>
+
+        {% if expenses %}
+          <div class="table-responsive mt-3">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Notes</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for expense in expenses %}
+                <tr>
+                  <td>{{ expense.date }}</td>
+                  <td><span class="badge bg-info text-dark">{{ expense.category }}</span></td>
+                  <td>{{ expense.amount }}</td>
+                  <td>{{ expense.notes }}</td>
+                  <td>
+                    <a href="{% url 'edit_expense' expense.pk %}" class="btn btn-sm btn-edit">Edit</a>
+                    <a href="{% url 'delete_expense' expense.pk %}" class="btn btn-sm btn-delete">Delete</a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-4">
+            <a href="{% url 'monthly_history' %}" class="btn btn-outline-dark w-100 w-md-auto">📈 Compare Monthly Spending</a>
+          </div>
+
+        {% else %}
+          <p class="text-muted">No expenses found this month. Start adding!</p>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
