@@ -126,3 +126,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+from django.urls import reverse_lazy
+
+LOGIN_REDIRECT_URL = reverse_lazy('dashboard')  # After login, go to dashboard
+LOGOUT_REDIRECT_URL = reverse_lazy('login')     # After logout, go to login page
