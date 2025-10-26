@@ -119,35 +119,70 @@ def set_budget(request):
     return render(request, 'expenses/set_budget.html', {'form': form})
 
 
+import matplotlib
+matplotlib.use('Agg')  # Use non-GUI backend
+import matplotlib.pyplot as plt
 
-# monthly_history
+import calendar
+import io
+import base64
+import matplotlib.pyplot as plt
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from .models import Expense
+
 @login_required
 def monthly_history(request):
     user = request.user
-    expenses = Expense.objects.filter(user=user)
-    
-    # Group by year and month, then sum amounts
+    today = timezone.now()
+    current_year = today.year
+    current_month = today.month
+
+    expenses = Expense.objects.filter(
+        user=user,
+        date__year=current_year,
+        date__month__lte=current_month
+    )
+
     summary = {}
     for expense in expenses:
         key = (expense.date.year, expense.date.month)
         summary.setdefault(key, 0)
-        summary[key] += expense.amount
+        summary[key] += float(expense.amount)
 
-    # Convert to sorted list for display/chart
-    sorted_summary = sorted(summary.items(), reverse=True)
-
+    sorted_summary = sorted(summary.items())
     formatted_summary = [
-        {
-            "month": calendar.month_name[month],
-            "year": year,
-            "amount": amount
-        }
+        {"month": calendar.month_name[month], "year": year, "amount": amount}
         for (year, month), amount in sorted_summary
     ]
 
+    # Prepare data for chart
+    months = [f"{entry['month']}" for entry in formatted_summary]
+    amounts = [entry['amount'] for entry in formatted_summary]
+
+    # Plot line chart with filled area
+    plt.figure(figsize=(10, 4))
+    plt.plot(months, amounts, marker='o', color='#FF6F61', linewidth=2)
+    plt.fill_between(months, amounts, color='#FFB6B9', alpha=0.3)
+    plt.xticks(rotation=45, ha='right')
+    plt.ylabel("Total Expenses (BDT)")
+    plt.title("Monthly Expenses Comparison")
+    plt.tight_layout()
+
+    # Save chart as base64 image
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png')
+    buf.seek(0)
+    chart_base64 = base64.b64encode(buf.getvalue()).decode()
+    plt.close()
+
     return render(request, 'expenses/monthly_history.html', {
-        'summary': formatted_summary
+        'summary': formatted_summary,
+        'chart_base64': chart_base64
     })
+
+
 
 
 # edit_budget

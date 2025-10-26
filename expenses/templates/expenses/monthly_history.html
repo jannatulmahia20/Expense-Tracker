@@ -1,26 +1,38 @@
 {% extends 'base.html' %}
+
 {% block content %}
 <div class="container mt-4">
     <div class="card p-4">
         <h3 class="mb-3">📊 Monthly Expense History</h3>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Month</th>
-                    <th>Year</th>
-                    <th>Total Spent (BDT)</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for entry in summary %}
-                <tr>
-                    <td>{{ entry.month }}</td>
-                    <td>{{ entry.year }}</td>
-                    <td>{{ entry.amount }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+
+        <!-- Chart Image -->
+        {% if chart_base64 %}
+        <div class="text-center mb-4">
+            <img src="data:image/png;base64,{{ chart_base64 }}" alt="Monthly Expenses Chart">
+        </div>
+        {% endif %}
+
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Year</th>
+                        <th>Total Spent (BDT)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in summary %}
+                    <tr>
+                        <td>{{ entry.month }}</td>
+                        <td>{{ entry.year }}</td>
+                        <td>{{ entry.amount }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 {% endblock %}

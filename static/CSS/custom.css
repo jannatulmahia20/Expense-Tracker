@@ -1,89 +1,171 @@
+/* =====================================
+   General Styles
+===================================== */
 body {
-    background-color: rgb(225, 138, 245);
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+a {
+    text-decoration: none;
+}
+
+/* =====================================
+   Navbar
+===================================== */
 .navbar {
-    background-color: #a96bd4 !important;
+    background-color: #4a90e2 !important;
+    transition: background-color 0.4s ease;
 }
 
-.navbar .nav-link,
-.navbar .navbar-brand {
-    color: #212529 !important;
-    font-weight: 500;
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #ffffff !important;
+    font-weight: 600;
 }
 
+.navbar .nav-link:hover {
+    color: #ffdd59 !important;
+}
+
+/* =====================================
+   Cards
+===================================== */
 .card {
     background-color: #ffffff;
     border-radius: 12px;
     border: none;
-    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* =====================================
+   Buttons
+===================================== */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
 .btn-primary {
-    background-color: #F2C6DE;
-    border-color: #F2C6DE;
-    color: #212529;
+    background-color: #4a90e2;
+    border-color: #4a90e2;
+    color: #fff;
 }
 
 .btn-primary:hover {
-    background-color: #e9b7d3;
-    border-color: #e9b7d3;
+    background-color: #357ab7;
+    border-color: #357ab7;
+    color: #fff;
 }
 
-.btn-outline-light {
-    border-color: #ffffff;
-    color: #ffffff;
+.btn-outline-primary {
+    border-color: #4a90e2;
+    color: #4a90e2;
 }
 
-.badge.bg-info {
-    background-color: #F2C6DE !important;
-    color: #212529 !important;
-}
-
-footer {
-    color: #666;
-    margin-top: 40px;
-    text-align: center;
-    font-size: 14px;
-}
-
-h3 {
-    color: #5a4e8c;
-}
-
-.btn {
-    border-radius: 8px;
+.btn-outline-primary:hover {
+    background-color: #4a90e2;
+    color: #fff;
 }
 
 .btn-edit {
-    background-color: #F2C6DE;
-    color: #212529;
+    background-color: #50e3c2;
+    color: #fff;
     border: none;
-    transition: 0.3s;
 }
 
 .btn-edit:hover {
-    background-color: #e9b7d3;
-    color: #000;
+    background-color: #3bb9a0;
+    color: #fff;
 }
 
 .btn-delete {
-    background-color: #DBCDF0;
-    color: #212529;
+    background-color: #ff6b6b;
+    color: #fff;
     border: none;
-    transition: 0.3s;
 }
 
 .btn-delete:hover {
-    background-color: #cbbdf0;
-    color: #000;
+    background-color: #e05555;
+    color: #fff;
 }
 
-/* 🌙 Dark Mode Styles */
+/* =====================================
+   Badges
+===================================== */
+.badge {
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 0.35em 0.65em;
+    transition: all 0.3s ease;
+}
+
+.badge.bg-info {
+    background-color: #50e3c2 !important;
+    color: #fff !important;
+}
+
+.badge.bg-secondary {
+    background-color: #4a90e2 !important;
+    color: #fff !important;
+}
+
+.badge.bg-danger {
+    background-color: #ff6b6b !important;
+    color: #fff !important;
+}
+
+/* =====================================
+   Tables
+===================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+thead {
+    background-color: #4a90e2;
+    color: #fff;
+}
+
+tr:hover {
+    background-color: #f1f9ff;
+}
+
+/* =====================================
+   Footer
+===================================== */
+footer {
+    background-color: #4a90e2;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+/* =====================================
+   Dark Mode
+===================================== */
 .dark-mode {
-    background-color: #1a0a2a !important; /* softened dark purple */
-    color: #f0e9ff !important;
+    background-color: #121212 !important;
+    color: #f5f5f5 !important;
 }
 
 .dark-mode .navbar {
@@ -92,65 +174,86 @@ h3 {
 
 .dark-mode .navbar .nav-link,
 .dark-mode .navbar .navbar-brand {
-    color: #f1f1f1 !important;
+    color: #f5f5f5 !important;
 }
 
 .dark-mode .card {
     background-color: #1e1e1e !important;
-    color: #ffffff !important;
-    border: 1px solid #333 !important;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-}
-
-.dark-mode .btn-edit,
-.dark-mode .btn-delete {
-    background-color: #2e2e2e !important;
-    color: #ffffff !important;
-}
-
-.dark-mode .btn-edit:hover,
-.dark-mode .btn-delete:hover {
-    background-color: #444444 !important;
-    color: #ffffff !important;
-}
-
-.dark-mode .badge {
-    background-color: #2a2a2a !important;
     color: #f5f5f5 !important;
+    box-shadow: 0 5px 15px rgba(255,255,255,0.05);
 }
 
-.dark-mode footer {
-    background-color: #1a1a1a !important;
-    color: #aaa;
+.dark-mode table thead {
+    background-color: #2c2c2c;
+    color: #f5f5f5;
 }
 
-.dark-mode h3 {
-    color: #c9c9ff;
+.dark-mode table tr:hover {
+    background-color: #333;
 }
 
-/* Dark mode tweaks for outlined primary buttons */
+.dark-mode .btn-primary {
+    background-color: #4a90e2;
+    color: #fff;
+}
+
 .dark-mode .btn-outline-primary {
-    color: #d8b9d8;
-    border-color: #d8b9d8;
+    color: #4a90e2;
+    border-color: #4a90e2;
 }
 
 .dark-mode .btn-outline-primary:hover {
-    background-color: #d8b9d8;
-    color: #121212;
+    background-color: #4a90e2;
+    color: #fff;
 }
 
-/* Fix for buttons in dark mode */
-body.dark-mode .btn-outline-dark {
-    color: #ffffff;
-    border-color: #ffffff;
+.dark-mode .btn-edit {
+    background-color: #50e3c2;
+    color: #fff;
 }
 
-body.dark-mode .btn-outline-dark:hover {
-    background-color: #ffffff;
-    color: #212529;
+.dark-mode .btn-delete {
+    background-color: #ff6b6b;
+    color: #fff;
 }
 
-/* Smooth transition for theme toggle */
-body, .card, .navbar, .btn, .badge, h3, footer, table, td, th, .form-control {
-    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+.dark-mode .badge.bg-info {
+    background-color: #50e3c2 !important;
+    color: #fff !important;
+}
+
+.dark-mode footer {
+    background-color: #1f1f1f;
+    color: #f5f5f5;
+}
+
+/* =====================================
+   Forms
+===================================== */
+input, select, textarea {
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 8px 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74,144,226,0.5);
+}
+
+/* =====================================
+   Responsive
+===================================== */
+@media (max-width: 768px) {
+    .navbar .d-flex {
+        flex-direction: column;
+        gap: 10px;
+    }
+    table th, table td {
+        padding: 8px 10px;
+    }
 }
